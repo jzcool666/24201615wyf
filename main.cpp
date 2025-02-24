@@ -8,7 +8,7 @@ int main()
 
 	getch();				//暂停，等待按键
 
-	closegraph();			//关闭窗口
+	closegraph();			//关闭窗口d
 
 	return 0;
 }
