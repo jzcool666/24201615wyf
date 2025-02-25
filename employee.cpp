@@ -51,7 +51,15 @@ void add_employee(Employee* last_employee)//添加员工的函数
 	last_employee->next = new_employee;//双向链表，让前一个的后缀指向当前的
 	new_employee->prev = last_employee;//让后一个的前缀指向前一个
 	new_employee->next = NULL;//尾插法，后面是空的
+	total_last_employee = new_employee;
 }
+
+void delete_employee(Employee* employee)//删除操作，这里可能需要先查找到员工后再删除，后续改进
+{
+	employee->prev = employee->next;
+	free(employee);
+}
+
 Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
 {
 	if (flag == 1)
