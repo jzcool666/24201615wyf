@@ -32,6 +32,6 @@ Employee* find_employee(int flag);//查询员工函数
 
 void delete_employee(Employee* employee);//删除员工函数
 
-struct department* create_department();//创建部门函数
+
 
 #endif

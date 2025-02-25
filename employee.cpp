@@ -4,6 +4,8 @@
 
 #include "employee.h"
 
+#include "department.h"
+
 Employee* list_employee = NULL;
 Department* list_department = NULL;
 
@@ -26,22 +28,7 @@ struct employee* create_employee()
 	}
 	return new_employee;
 }
-struct department* create_department()
-{
-	Department* new_department = (Department*)malloc(sizeof(Department));
-	if (!new_department)
-	{
-		printf("创建部门失败！错误码3");
-		//此处也有一个返回到上一个界面的函数
-		return NULL;
-	}
-	if (list_department == NULL)
-	{
-		list_department->next = new_department;
-		new_department ->next = NULL;
-	}
-	return new_department;
-}
+
 void add_employee(Employee* last_employee)//添加员工的函数
 {
 	Employee* new_employee = create_employee();
@@ -70,26 +57,7 @@ void add_employee(Employee* last_employee)//添加员工的函数
 	new_employee->prev = last_employee;//让后一个的前缀指向前一个
 	new_employee->next = NULL;//尾插法，后面是空的
 	total_tail = new_employee;
-
-	//以上部分是将员工加入到总链表中，下面是将员工加入到部门链表当中
-	Department* head = list_department;
-	while (strcmp(head->name, new_employee->department) != 0&&head->next!=NULL)
-	{
-		head = head->next;
-	}
-	if (head->next == NULL)
-	{
-		head->next = create_department();
-		head = head->next;
-		strcpy(head->name, new_employee->department);
-	}
-	else
-	{
-		head->employee->prev = new_employee;
-		new_employee->next = head->employee;
-		new_employee->prev = NULL;
-		head->employee = new_employee;
-	}
+	//注意在设计的后续的菜单的时候，员工添加操作应当和部门添加操作同时进行
 
 }
 
@@ -114,6 +82,7 @@ void delete_employee(Employee* employee)//删除操作，这里可能需要先查找到员工后再
 		}
 
 		free(employee);
+		//注意在设计的后续的菜单的时候，员工删除操作应当和部门删除操作同时进行
 }
 
 Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
