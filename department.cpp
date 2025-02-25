@@ -55,12 +55,21 @@ void delete_department(Employee* employee)//部门删除函数
 	if (head->next == NULL)
 	{
 		printf("部门不存在或系统有误，错误码4！");
-		return;
+		return ;
 	}
 	else
 	{
-		delete_employee(employee);
+		delete_employee(employee);//原函数在employee.cpp中
 		return;
 	}
 
+}
+/*这里面这个employee应当是调用find_employee函数的返回值，也就是需要调动的员工
+department字符串是要转去的部门
+所以在这个函数使用之前要先输入需要去到的部门*/
+void move_department(Employee* employee,char department[])
+{
+	add_department(employee);
+	delete_department(employee);
+	strcpy(employee->department, department);
 }

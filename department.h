@@ -8,4 +8,6 @@ void add_department(Employee* new_employee);//添加到部门的函数，将员工添加到部门
 
 void delete_department(Employee* employee);//部门删除函数
 
+void move_department(Employee* employee, char department[]);//部门调动函数
+
 #endif DEPARTMENT_H

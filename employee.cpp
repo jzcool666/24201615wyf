@@ -91,13 +91,14 @@ Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
 	{
 		Employee* head = list_employee;
 		char temp[1024];
-		printf("请输入员工姓名：\n");
+		//printf("请输入员工姓名：\n");	后续再另一个函数里面再输出这个
 		scanf("%s", temp);
 		while (head->next != NULL)
 		{
 			if (strcmp(head->name, temp) == 0)
 			{
-				printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n",head->name,head->number,head->duty,head->department,head->hometown,head->salary);
+				//printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n",head->name,head->number,head->duty,head->department,head->hometown,head->salary);
+				//后续再另一个函数里面再输出信息
 				return head;
 			}
 		}
@@ -108,13 +109,13 @@ Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
 	{
 		Employee* head = list_employee;
 		int temp;
-		printf("请输入员工姓名：\n");
+		//printf("请输入员工姓名：\n");
 		scanf("%d", temp);
 		while (head->next != NULL)
 		{
 			if (head->number==temp)
 			{
-				printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n", head->name, head->number, head->duty, head->department, head->hometown, head->salary);
+				//printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n", head->name, head->number, head->duty, head->department, head->hometown, head->salary);
 				return head;
 			}
 		}
