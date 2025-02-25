@@ -33,7 +33,7 @@ void add_employee(Employee* last_employee)//添加员工的函数
 {
 	Employee* new_employee = create_employee();
 	
-	printf("添加员工信息\n");
+	printf("添加员工信息\n");//后续的ege设计当中会把所有的printf修改掉，改成可视化的界面
 	
 	printf("请输入姓名：\n");
 	scanf("%s", new_employee->name);
