@@ -8,6 +8,8 @@
 
 Employee* list_employee = NULL;
 Department* list_department = NULL;
+Employee* total_tail = NULL;
+
 
 
 struct employee* create_employee()
@@ -21,15 +23,13 @@ struct employee* create_employee()
 	}
 	if (list_employee == NULL)
 	{
-		list_employee->next = new_employee;
-		list_employee->prev = NULL;
-		new_employee->prev = list_employee;
-		new_employee->next = NULL;
+		list_employee= new_employee;
+		total_tail = new_employee;
 	}
 	return new_employee;
 }
 
-void add_employee(Employee* last_employee)//添加员工的函数
+void add_employee()//添加员工的函数
 {
 	Employee* new_employee = create_employee();
 	
@@ -53,10 +53,18 @@ void add_employee(Employee* last_employee)//添加员工的函数
 	printf("请输入薪水：\n");
 	scanf("%d", &new_employee->salary);
 	
-	last_employee->next = new_employee;//双向链表，让前一个的后缀指向当前的
-	new_employee->prev = last_employee;//让后一个的前缀指向前一个
-	new_employee->next = NULL;//尾插法，后面是空的
-	total_tail = new_employee;
+	if (list_employee->next = NULL)
+	{
+		list_employee = new_employee;
+		total_tail = new_employee;
+	}
+	else
+	{
+		total_tail->next = new_employee;//双向链表，让前一个的后缀指向当前的
+		new_employee->prev = total_tail;//让后一个的前缀指向前一个
+		new_employee->next = NULL;//尾插法，后面是空的
+		total_tail = new_employee;
+	}
 	//注意在设计的后续的菜单的时候，员工添加操作应当和部门添加操作同时进行
 
 }
@@ -82,6 +90,7 @@ void delete_employee(Employee* employee)//删除操作，这里可能需要先查找到员工后再
 		}
 
 		free(employee);
+		printf("删除成功");
 		//注意在设计的后续的菜单的时候，员工删除操作应当和部门删除操作同时进行
 }
 
@@ -91,13 +100,13 @@ Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
 	{
 		Employee* head = list_employee;
 		char temp[1024];
-		//printf("请输入员工姓名：\n");	后续再另一个函数里面再输出这个
+		printf("请输入员工姓名：\n");//	后续再另一个函数里面再输出这个
 		scanf("%s", temp);
-		while (head->next != NULL)
+		while (head != NULL)
 		{
 			if (strcmp(head->name, temp) == 0)
 			{
-				//printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n",head->name,head->number,head->duty,head->department,head->hometown,head->salary);
+				printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n",head->name,head->number,head->duty,head->department,head->hometown,head->salary);
 				//后续再另一个函数里面再输出信息
 				return head;
 			}
@@ -105,17 +114,17 @@ Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
 		printf("该员工不存在！");
 		return NULL;
 	}
-	else if (flag == 0)
+	else if (flag == 2)
 	{
 		Employee* head = list_employee;
 		int temp;
-		//printf("请输入员工姓名：\n");
-		scanf("%d", temp);
-		while (head->next != NULL)
+		printf("请输入员工工号：\n");
+		scanf("%d", &temp);
+		while (head != NULL)
 		{
 			if (head->number==temp)
 			{
-				//printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n", head->name, head->number, head->duty, head->department, head->hometown, head->salary);
+				printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%\n薪水：%d\n", head->name, head->number, head->duty, head->department, head->hometown, head->salary);
 				return head;
 			}
 		}
@@ -129,9 +138,9 @@ Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
 	}
 }
 
-void show_employee()//员工信息展示
+void show_employee(Employee* employee)//员工信息展示
 {
-
+	printf("姓名：%s\n工号：%d\n职位：%s\n部门：%s\n籍贯：%s\n薪水：%d\n", employee->name, employee->number, employee->duty, employee->department, employee->hometown, employee->salary);
 }
 
 void show_total()//整个单位的信息展示，展示的信息有人员，平均工资，最高工资和最低工资，工资方差

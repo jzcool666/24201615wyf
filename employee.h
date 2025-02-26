@@ -23,7 +23,7 @@ extern Employee* list_employee;//在employee.cpp中使用
 extern Department* list_department;//同上
 extern Employee* total_tail;//在所有员工当中的尾节点
 
-void add_employee(Employee* last_employee);//添加员工函数
+void add_employee();//添加员工函数
 
 struct employee* create_employee();//创造员工函数
 

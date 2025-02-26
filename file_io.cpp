@@ -45,7 +45,7 @@ Employee* load_file (const char* filename, Employee* employee)
 	if (file == NULL)
 	{
 		perror("文件打开失败");
-		return;
+		return NULL;
 	}
 	
 	Data* temp = (Data*)malloc(sizeof(Data));
