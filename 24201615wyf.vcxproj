@@ -21,11 +21,13 @@
   <ItemGroup>
     <ClCompile Include="department.cpp" />
     <ClCompile Include="employee.cpp" />
+    <ClCompile Include="file_io.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="department.h" />
     <ClInclude Include="employee.h" />
+    <ClInclude Include="file_io.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

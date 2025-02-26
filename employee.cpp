@@ -128,3 +128,13 @@ Employee* find_employee(int flag)//flag=1是姓名查找，flag=2是工号查找
 		return NULL;//返回值是NULL的时候需要退回图形界面上一层
 	}
 }
+
+void show_employee()//员工信息展示
+{
+
+}
+
+void show_total()//整个单位的信息展示，展示的信息有人员，平均工资，最高工资和最低工资，工资方差
+{
+
+}

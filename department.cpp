@@ -73,3 +73,14 @@ void move_department(Employee* employee,char department[])
 	delete_department(employee);
 	strcpy(employee->department, department);
 }
+
+void sort_department(Department* department)
+{
+
+}
+
+void show_department()//部门信息展示，展示的信息有人员，平均工资，最高工资和最低工资，工资方差
+{
+
+}
+
