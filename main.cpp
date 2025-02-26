@@ -12,12 +12,14 @@ int main()
 	{
 		add_employee();
 	}
-	while (list_employee != NULL)
+	Employee* head = list_employee;
+	while (head != NULL)
 	{
-		show_employee(list_employee);
+		show_employee(head);
 		printf("------------------\n");
-		list_employee = list_employee->next;
+		head = head->next;
 	}
+	find_employee(1);
 
 
 
